@@ -2,6 +2,17 @@ var fs = require('fs');
 var net = require('net');
 
 exports.create = function (config) {
+    function update() {
+        var response = {
+            method: 'update',
+            params: updates
+        };
+        sockets.forEach(function (socket) {
+            socket.write(JSON.stringify(response) + '\n');
+        });
+        updates = [];
+    }
+
     if (!config) config = {};
     if (!config.blocks) config.blocks = {};
 
@@ -14,20 +25,10 @@ exports.create = function (config) {
             if (typeof name !== 'string') return;
             updates.push([name, value]);
             vars[name] = value;
-            ext.update();
+            update();
         },
         get: function (name) {
             return vars[name];
-        },
-        update: function () {
-            var response = {
-                method: 'update',
-                params: updates
-            };
-            sockets.forEach(function (socket) {
-                socket.write(JSON.stringify(response) + '\n');
-            });
-            updates = [];
         },
         blocks: config.blocks,
         vars: {}
