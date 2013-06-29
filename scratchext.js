@@ -30,6 +30,16 @@ exports.create = function (config) {
         get: function (name) {
             return vars[name];
         },
+        declare: function (name) {
+            Object.defineProperty(ext.vars, name, {
+                set: function (value) {
+                    ext.set(name, value);
+                },
+                get: function () {
+                    return ext.get(name);
+                }
+            });
+        },
         blocks: {},
         vars: {}
     };
@@ -42,15 +52,7 @@ exports.create = function (config) {
         blocks.forEach(function (block) {
             if (!(block instanceof Array) || block.length < 3) return;
             if (block[0] === 'r') {
-                var name = block[2];
-                Object.defineProperty(ext.vars, name, {
-                    set: function (value) {
-                        ext.set(name, value);
-                    },
-                    get: function () {
-                        return ext.get(name);
-                    }
-                });
+                ext.declare(block[2]);
             }
         });
     }
