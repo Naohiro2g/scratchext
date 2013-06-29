@@ -1,7 +1,7 @@
 var fs = require('fs');
 var net = require('net');
 
-exports.start = function (config) {
+exports.create = function (config) {
     if (!config) config = {};
     if (!config.blocks) config.blocks = {};
 
