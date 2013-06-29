@@ -26,7 +26,7 @@ Create a manifest file called `extension.json`. This file contains information a
 Then create `extension.js`, which contains the extension behavior.
 
 ```js
-require('./scratchext/scratchext').start({
+require('./scratchext/scratchext').create({
     blocks: {
         greet: function () {
             console.log('Hello, world!');
@@ -54,3 +54,5 @@ $ node extension.js
 Connected to Scratch as "HelloWorld", port 12345
 Hello, world!
 ```
+
+That's it! Check out the [wiki](https://github.com/queryselector/scratchext/wiki) for more tutorials and documentation.
