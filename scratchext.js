@@ -33,10 +33,10 @@ exports.create = function (config) {
         vars: {}
     };
 
-    var info = JSON.parse(fs.readFileSync(config.info || 'extension.json'));
-    var port = info.extensionPort;
+    var manifest = JSON.parse(fs.readFileSync(config.manifest || 'extension.json'));
+    var port = manifest.extensionPort;
 
-    var blocks = info.blockSpecs;
+    var blocks = manifest.blockSpecs;
     if (blocks instanceof Array) {
         blocks.forEach(function (block) {
             if (!(block instanceof Array) || block.length < 3) return;
