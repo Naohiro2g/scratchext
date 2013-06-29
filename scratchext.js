@@ -56,7 +56,7 @@ exports.create = function (config) {
 
     var server = net.createServer(function (socket) {
         socket.on('connect', function (e) {
-            console.log('Connected to Scratch as "%s", port %d', info.extensionName, port);
+            console.log('Connected to Scratch as "%s", port %d', manifest.extensionName, port);
             sockets.push(socket);
         });
         socket.on('close', function (e) {
