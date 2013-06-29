@@ -54,3 +54,5 @@ $ node extension.js
 Connected to Scratch as "HelloWorld", port 12345
 Hello, world!
 ```
+
+That's it! Check out the [wiki](https://github.com/queryselector/scratchext/wiki) for more tutorials and documentation.
