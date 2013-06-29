@@ -7,8 +7,9 @@ exports.create = function (config) {
             method: 'update',
             params: updates
         };
+        var data = JSON.stringify(response) + '\n';
         sockets.forEach(function (socket) {
-            socket.write(JSON.stringify(response) + '\n');
+            socket.write(data);
         });
         updates = [];
     }
@@ -69,9 +70,21 @@ exports.create = function (config) {
     }
 
     var server = net.createServer(function (socket) {
+        function init() {
+            var list = [];
+            for (var name in vars) if (Object.hasOwnProperty.call(vars, name)) {
+                list.push([name, vars[name]]);
+            }
+            var response = {
+                method: 'update',
+                params: list
+            };
+            socket.write(JSON.stringify(response) + '\n');
+        }
         socket.on('connect', function (e) {
             console.log('Connected to Scratch as "%s", port %d', manifest.extensionName, port);
             sockets.push(socket);
+            init();
         });
         socket.on('close', function (e) {
             console.log('Disconnected from Scratch');
