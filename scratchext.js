@@ -30,7 +30,7 @@ exports.create = function (config) {
         get: function (name) {
             return vars[name];
         },
-        blocks: config.blocks,
+        blocks: {},
         vars: {}
     };
 
@@ -53,6 +53,17 @@ exports.create = function (config) {
                 });
             }
         });
+    }
+
+    var blocks = config.blocks;
+    if (blocks) {
+        for (var selector in blocks) if (Object.hasOwnProperty.call(blocks, selector)) {
+            (function (selector, block) {
+                ext.blocks[selector] = function () {
+                    return block.call(ext, arguments);
+                };
+            }(selector, blocks[selector]));
+        }
     }
 
     var server = net.createServer(function (socket) {
