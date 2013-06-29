@@ -2,6 +2,7 @@ var fs = require('fs');
 var net = require('net');
 
 exports.start = function (config) {
+    if (!config) config = {};
     if (!config.blocks) config.blocks = {};
 
     var sockets = [];
