@@ -35,13 +35,13 @@ require('./scratchext/scratchext').create({
 });
 ```
 
-Run the extension with Node.
+Run the extension with Node…
 
 ```sh
 $ node extension.js
 ```
 
-And import the extension into Scratch by shift-clicking the **File** menu, selecting **Import Experimental Extension**, and choosing `extension.json` in the file dialog.
+…and import the extension into Scratch by shift-clicking the **File** menu, selecting **Import Experimental Extension**, and choosing `extension.json` in the file dialog.
 
 ![Shift-click File menu with 'Import Experimental Extension' highlighted"](http://scratch.mit.edu/internalapi/asset/0a21c83d286a59ad7f0408fd8296eb82.png/get/)
 
@@ -49,7 +49,7 @@ Your block will appear in the **More Blocks** category. Click it to say hello!
 
 ![Image of the 'say hello' block in the 'More Blocks' palette](http://scratch.mit.edu/internalapi/asset/65a2b074d530f905ccb840853d06842d.png/get/)
 
-```
+```sh
 $ node extension.js
 Connected to Scratch as "HelloWorld", port 12345
 Hello, world!
