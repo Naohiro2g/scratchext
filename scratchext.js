@@ -69,6 +69,15 @@ exports.create = function (config) {
         }
     }
 
+    var policyFile = [
+        '<?xml version="1.0"?>',
+        '<!DOCTYPE cross-domain-policy SYSTEM "http://www.adobe.com/xml/dtds/cross-domain-policy.dtd">',
+        '<cross-domain-policy>',
+        '    <allow-access-from domain="*.scratch.mit.edu" to-ports="' + port + '"/>',
+        '    <allow-access-from domain="*.media.mit.edu" to-ports="' + port + '"/>',
+        '</cross-domain-policy>'
+    ].join('\n');
+
     var server = net.createServer(function (socket) {
         function init() {
             var list = [];
@@ -93,7 +102,7 @@ exports.create = function (config) {
         });
         socket.on('data', function (data) {
             if (data.toString() === '<policy-file-request/>\0') {
-                socket.write('<?xml version="1.0"?><cross-domain-policy><allow-access-from domain="*" to-ports="*"/></cross-domain-policy>\0');
+                socket.end(policyFile + '\0');
                 return;
             }
             ('' + data).split('\n').forEach(function (line) {
@@ -113,5 +122,15 @@ exports.create = function (config) {
         });
     });
     server.listen(port);
+
+    var policyServer = net.createServer(function (socket) {
+        socket.on('data', function (data) {
+            if (data.toString() === '<policy-file-request/>\0') {
+                socket.end(policyFile + '\0');
+            }
+        });
+    });
+    policyServer.listen(843);
+
     return ext;
 };
