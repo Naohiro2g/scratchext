@@ -38,7 +38,7 @@ require('./scratchext/scratchext').create({
 Run the extension with Node…
 
 ```sh
-$ node extension.js
+$ sudo node extension.js
 ```
 
 …and import the extension into Scratch by shift-clicking the **File** menu, selecting **Import Experimental Extension**, and choosing `extension.json` in the file dialog.
@@ -50,7 +50,7 @@ Your block will appear in the **More Blocks** category. Click it to say hello!
 ![Image of the 'say hello' block in the 'More Blocks' palette](http://scratch.mit.edu/internalapi/asset/65a2b074d530f905ccb840853d06842d.png/get/)
 
 ```sh
-$ node extension.js
+$ sudo node extension.js
 Connected to Scratch as "HelloWorld", port 12345
 Hello, world!
 ```
