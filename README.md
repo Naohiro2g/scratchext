@@ -50,7 +50,7 @@ Your block will appear in the **More Blocks** category. Click it to say hello!
 ![Image of the 'say hello' block in the 'More Blocks' palette](http://scratch.mit.edu/internalapi/asset/65a2b074d530f905ccb840853d06842d.png/get/)
 
 ```sh
-$ node extension.js
+$ sudo node extension.js
 Connected to Scratch as "HelloWorld", port 12345
 Hello, world!
 ```
