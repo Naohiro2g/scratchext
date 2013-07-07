@@ -38,7 +38,7 @@ require('./scratchext/scratchext').create({
 Run the extension with Node…
 
 ```sh
-$ node extension.js
+$ sudo node extension.js
 ```
 
 …and import the extension into Scratch by shift-clicking the **File** menu, selecting **Import Experimental Extension**, and choosing `extension.json` in the file dialog.
