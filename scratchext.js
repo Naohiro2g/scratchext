@@ -73,8 +73,8 @@ exports.create = function (config) {
         '<?xml version="1.0"?>',
         '<!DOCTYPE cross-domain-policy SYSTEM "http://www.adobe.com/xml/dtds/cross-domain-policy.dtd">',
         '<cross-domain-policy>',
-        '    <allow-access-from domain="*.scratch.mit.edu" to-ports="' + port + '"/>',
-        '    <allow-access-from domain="*.media.mit.edu" to-ports="' + port + '"/>',
+        '    <allow-access-from domain="*.scratch.mit.edu" to-ports="*"/>',
+        '    <allow-access-from domain="*.media.mit.edu" to-ports="*"/>',
         '</cross-domain-policy>'
     ].join('\n');
 
@@ -130,6 +130,11 @@ exports.create = function (config) {
             }
         });
     });
+    policyServer.once('error', function (err) {
+        if (err.code == 'EADDRINUSE') {
+            console.warn('Could not listen on port 843. This is either because you have another extension running, or you did not use `sudo node`.');
+        }
+    })
     policyServer.listen(843);
 
     return ext;
