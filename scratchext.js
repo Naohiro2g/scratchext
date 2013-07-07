@@ -52,7 +52,7 @@ exports.create = function (config) {
     if (blocks instanceof Array) {
         blocks.forEach(function (block) {
             if (!(block instanceof Array) || block.length < 3) return;
-            if (block[0] === 'r') {
+            if (block[0] === 'r' || block[0] === 'b') {
                 ext.declare(block[2]);
             }
         });
