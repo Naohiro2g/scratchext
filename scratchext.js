@@ -90,11 +90,9 @@ exports.create = function (config) {
             };
             socket.write(JSON.stringify(response) + '\n');
         }
-        socket.on('connect', function (e) {
-            console.log('Connected to Scratch as "%s", port %d', manifest.extensionName, port);
-            sockets.push(socket);
-            init();
-        });
+        console.log('Connected to Scratch as "%s", port %d', manifest.extensionName, port);
+        sockets.push(socket);
+        init();
         socket.on('close', function (e) {
             console.log('Disconnected from Scratch');
             var i = sockets.indexOf(socket);
