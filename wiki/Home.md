@@ -4,5 +4,5 @@ Welcome to the scratchext wiki!
 
 ### Tutorials
 
-* [Hello, World!](Tutorial: Hello World.md)
-* [Filesystem](Tutorial: Filesystem.md)
+* [Hello, World!](Tutorial:-Hello World.md)
+* [Filesystem](Tutorial:-Filesystem.md)
