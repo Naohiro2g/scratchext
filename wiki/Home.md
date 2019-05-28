@@ -1,8 +1,8 @@
 Welcome to the scratchext wiki!
 
-[Manifests](wiki/Manifests) · [Blocks](wiki/Blocks) · [Variables](wiki/Variables) · [Extension objects](wiki/Extension objects)
+[Manifests](wiki/Manifests) · [Blocks](Blocks) · [Variables](Variables) · [Extension objects](Extension objects)
 
 ### Tutorials
 
-* [Hello, World!](wiki/Tutorial: Hello World)
-* [Filesystem](wiki/Tutorial: Filesystem)
+* [Hello, World!](Tutorial: Hello World)
+* [Filesystem](Tutorial: Filesystem)
